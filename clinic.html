@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#01a86b">
+<title>Aura Aesthetic Clinic</title>
+<style>
+:root{--bg1:#fffcec;--bg2:#fff0b5;--card:#ffffff;--ink:#0d2b20;--mute:#5b7a6b;--accent:#01a86b;--gold:#fdc615;--soft:#fff0b0;--line:#f2e4a8;--onacc:#ffffff;--shadow:rgba(1,168,107,.35)}
+@media (prefers-color-scheme:dark){:root{--bg1:#0d2c21;--bg2:#06150f;--card:#12372b;--ink:#f7f3df;--mute:#9fbcab;--accent:#1fd091;--gold:#fdc615;--soft:#1e4a38;--line:#265142;--onacc:#05261a;--shadow:rgba(0,0,0,.5)}}
+*{box-sizing:border-box;margin:0}
+html,body{min-height:100%}
+body{overflow-x:hidden;background:linear-gradient(180deg,var(--bg1),var(--bg2)) fixed;color:var(--ink);font-family:Georgia,"Times New Roman",serif;display:flex;justify-content:center}
+#app{width:100%;max-width:440px;min-height:100vh;padding:env(safe-area-inset-top,0) 22px calc(24px + env(safe-area-inset-bottom,0))}
+svg{display:block}
+.art{fill:none;stroke:var(--accent);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.art .f{fill:var(--gold);fill-opacity:.22;stroke:none}
+.art .g{stroke:var(--gold)}
+.top{display:flex;align-items:center;gap:12px;padding:20px 0 6px}
+.back{border:1px solid var(--line);background:var(--card);color:var(--accent);width:40px;height:40px;border-radius:50%;font-size:20px;cursor:pointer}
+.crumb{font:11px system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
+.steps{display:flex;gap:6px}.steps i{height:2px;flex:1;background:var(--line)}.steps i.on{background:var(--gold)}
+.brand{text-align:center;margin-top:18px;letter-spacing:.5em;color:var(--accent);font-size:15px;padding-left:.5em}
+.orn{width:70px;height:1px;background:var(--gold);margin:12px auto}
+h1{font-weight:400;font-size:32px;line-height:1.15;text-align:center}
+p.sub{font:15px/1.55 system-ui,sans-serif;color:var(--mute);text-align:center;margin:10px 0 26px}
+.grid{display:grid;gap:14px}.two{grid-template-columns:1fr 1fr}
+button.tile{font-family:inherit;color:var(--ink);cursor:pointer;background:var(--card);border:1px solid var(--line);border-radius:22px;text-align:left;transition:transform .2s,box-shadow .2s;box-shadow:0 8px 24px -16px var(--shadow)}
+button.tile:hover,button.tile:focus-visible{transform:translateY(-3px);outline:none;border-color:var(--gold)}
+.gt{padding:16px 14px 18px;text-align:center!important}
+.arch{background:linear-gradient(180deg,var(--soft),transparent 130%);border-radius:999px 999px 14px 14px;overflow:hidden;display:flex;align-items:flex-end;justify-content:center}
+.gt .arch{height:190px;margin-bottom:12px}.gt .arch svg{width:78%}
+.gt b,.rt b{font-weight:400;font-size:21px;display:block}
+small{font:12px/1.4 system-ui,sans-serif;color:var(--mute);letter-spacing:.04em}
+.rt{display:flex;align-items:center;gap:18px;padding:14px 18px 14px 14px}
+.rt .arch{width:78px;height:96px;flex:none;align-items:center}.rt .arch svg{width:64px}
+.rt .go,.ti .go{margin-left:auto;color:var(--gold);font-size:22px}
+.ti{display:flex;align-items:center;gap:16px;padding:14px 18px 14px 14px}
+.ring{width:56px;height:56px;border-radius:50%;border:1px solid var(--gold);background:var(--soft);display:grid;place-items:center;flex:none}
+.ring svg{width:30px;height:30px}
+.sheet{position:fixed;inset:0;background:rgba(4,24,16,.55);display:flex;align-items:flex-end;justify-content:center;z-index:5}
+.sheet>div{background:var(--card);width:100%;max-width:440px;border-radius:30px 30px 0 0;padding:30px 24px calc(26px + env(safe-area-inset-bottom,0));text-align:center}
+.sheet .ring{width:84px;height:84px;margin:0 auto 16px}.sheet .ring svg{width:46px;height:46px}
+.sheet h2{font-weight:400;font-size:26px}
+.sheet p{font:15px/1.6 system-ui,sans-serif;color:var(--mute);margin:10px 0 16px}
+.meta{display:flex;gap:10px;justify-content:center;margin-bottom:22px}
+.meta span{font:13px system-ui,sans-serif;border:1px solid var(--line);padding:7px 14px;border-radius:99px}
+.btn{width:100%;border:0;background:var(--accent);color:var(--onacc);font:600 15px system-ui,sans-serif;letter-spacing:.06em;padding:16px;border-radius:99px;cursor:pointer}
+.btn.ghost{background:none;color:var(--mute);margin-top:6px}
+
+.fig{width:100%;height:auto;max-height:68vh;margin:0 auto}
+.zone{cursor:pointer;outline:none}
+.zone .hl{fill:var(--soft);fill-opacity:0;stroke:none;transition:fill-opacity .25s}
+.zone:hover .hl,.zone:focus-visible .hl{fill-opacity:1}
+.zone:hover .dot,.zone:focus-visible .dot{r:6}
+.dot{fill:var(--accent);stroke:none;transition:r .2s}
+.lt{font:19px Georgia,serif;fill:var(--ink);stroke:none}
+.ls{font:11px system-ui,sans-serif;fill:var(--mute);stroke:none;letter-spacing:.04em}
+.hint{text-align:center;margin-top:6px}
+
+#app{transition:opacity .32s ease,transform .32s ease}
+#app.leave{opacity:0;transform:scale(.985)}
+@keyframes inUp{from{opacity:0;transform:translateY(18px) scale(.985)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes rise{from{transform:translateY(60px);opacity:0}to{transform:none;opacity:1}}
+@keyframes draw{to{stroke-dashoffset:0}}
+#app>*:not(.grid){animation:inUp .7s cubic-bezier(.2,.7,.2,1) backwards;animation-delay:calc(var(--i,0)*80ms)}
+.grid>*{animation:inUp .7s cubic-bezier(.2,.7,.2,1) backwards;animation-delay:calc(.2s + var(--d,0)*90ms)}
+button.tile:active{transform:scale(.97)}
+.fig.draw path:not(.lead){stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.8s cubic-bezier(.5,0,.2,1) forwards}
+.fig.draw .lt,.fig.draw .ls,.fig.draw .dot,.fig.draw .lead,.fig.zin .lt,.fig.zin .ls,.fig.zin .dot,.fig.zin .lead{animation:fade .9s 1s backwards}
+.fig.zin .lt,.fig.zin .ls,.fig.zin .dot,.fig.zin .lead{animation-delay:.55s}
+.fig.zooming .zone:not(.pick){opacity:0;transition:opacity .55s ease}
+.fig.zooming .pick .lt,.fig.zooming .pick .ls,.fig.zooming .pick .dot,.fig.zooming .pick .lead{opacity:0;transition:opacity .4s ease}
+.fig.zooming .hl{fill-opacity:0}
+#app.fadeui>*:not(.fig){opacity:0;transition:opacity .45s ease}
+.sheet{animation:fade .35s ease}
+.sheet>div{animation:rise .55s cubic-bezier(.2,.8,.2,1)}
+.sheet>div>*{animation:inUp .6s cubic-bezier(.2,.7,.2,1) backwards}
+.sheet>div>*:nth-child(2){animation-delay:.06s}.sheet>div>*:nth-child(3){animation-delay:.12s}.sheet>div>*:nth-child(4){animation-delay:.18s}.sheet>div>*:nth-child(5){animation-delay:.24s}
+.sheet.closing{opacity:0;transition:opacity .32s ease}
+.sheet.closing>div{transform:translateY(50px);transition:transform .32s ease}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+const sv=(vb,b,c)=>`<svg viewBox="${vb}" class="art ${c||''}" aria-hidden="true">${b}</svg>`;
+const IC={
+drop:'<path d="M24 5C24 5 10 21 10 30a14 14 0 0 0 28 0C38 21 24 5 24 5Z"/><path class="g" d="M17 31a7 7 0 0 0 5 6"/>',
+lift:'<path d="M11 24 24 11l13 13M11 37 24 24l13 13"/>',
+syringe:'<g transform="rotate(45 24 24)"><rect x="18" y="12" width="12" height="22" rx="2"/><path d="M24 34v10M13 12h22M24 4v8"/><path class="g" d="M18 22h12"/></g>',
+laser:'<circle cx="24" cy="24" r="6"/><path class="g" d="M24 5v8M24 35v8M5 24h8M35 24h8M11 11l6 6M31 31l6 6M37 11l-6 6M17 31l-6 6"/>',
+snow:'<path d="M24 5v38M7.6 14.5l32.8 19M7.6 33.5l32.8-19"/><path class="g" d="M19 8l5 4 5-4M19 40l5-4 5 4"/>',
+wave:'<path d="M5 17q9.5-11 19 0t19 0M5 31q9.5-11 19 0t19 0"/>',
+flame:'<path d="M24 5c4 11 14 15 12 27a12 12 0 0 1-24 0c0-8 6-10 6-18 4 2 4-2 6-9Z"/><path class="g" d="M20 36a5 5 0 0 0 8 0c0-4-4-5-4-9-2 3-4 5-4 9Z"/>',
+leaf:'<path d="M9 39C9 19 21 9 39 9c0 19-9 30-30 30Z"/><path class="g" d="M9 39 29 19"/>',
+sun:'<circle cx="24" cy="24" r="8"/><path class="g" d="M24 6v5M24 37v5M6 24h5M37 24h5M11 11l3.5 3.5M33.5 33.5 37 37M37 11l-3.5 3.5M14.5 33.5 11 37"/>',
+vein:'<path d="M15 5c9 10-5 18 5 27 6 5 3 8 9 11"/><path class="g" d="M20 32c-6 0-9 4-9 9M25 14c6 0 10 3 12 9"/>',
+dots:'<circle cx="24" cy="24" r="17"/><path class="g" d="M17 18h.1M28 15h.1M32 25h.1M22 29h.1M15 30h.1M27 35h.1M19 23h.1"/>',
+lips:'<path d="M6 24c8-10 13-9 18-4 5-5 10-6 18 4-8 12-28 12-36 0ZM6 24h36"/>',
+bow:'<path d="M24 24 9 14v20ZM24 24l15-10v20Z"/><circle class="g" cx="24" cy="24" r="3"/>',
+star:'<path d="M24 5c2 13 6 17 19 19-13 2-17 6-19 19-2-13-6-17-19-19C18 22 22 18 24 5Z"/>',
+leg:'<path d="M17 5c-4 14 4 22 1 38M31 5c4 14-4 22-1 38"/><path class="g" d="M9 20q4 3 0 8M39 20q-4 3 0 8"/>'
+};
+const ic=k=>sv("0 0 48 48",IC[k]);
+const ART={
+male:sv("0 0 120 150",'<path d="M14 150C16 118 40 108 60 108s44 10 46 42"/><path d="M50 94v16M70 94v16"/><ellipse cx="60" cy="66" rx="22" ry="28"/><path class="f" d="M38 62C34 36 50 28 62 28c16 0 24 16 20 34-2-10-10-16-22-16-10 0-18 6-22 16Z"/><path d="M38 62C34 36 50 28 62 28c16 0 24 16 20 34"/><path class="g" d="M50 68h5M65 68h5M54 84q6 4 12 0M44 74q6 14 16 14"/>'),
+female:sv("0 0 120 150",'<path d="M14 150C16 118 40 108 60 108s44 10 46 42"/><path d="M52 94v16M68 94v16"/><path class="f" d="M36 66C28 34 48 22 62 24c20 2 30 22 22 42 6 24 2 44-8 60L44 126C34 110 30 88 36 66Z"/><ellipse cx="60" cy="68" rx="21" ry="27" style="fill:var(--card)"/><ellipse cx="60" cy="68" rx="21" ry="27"/><path d="M39 58C50 44 68 42 82 56M36 66C28 34 48 22 62 24c20 2 30 22 22 42 6 24 2 44-8 60M36 66c-6 22-2 44 8 60"/><path class="g" d="M50 70h5M65 70h5M53 84q7 5 14 0"/>'),
+head:sv("0 0 100 120",'<ellipse cx="50" cy="58" rx="22" ry="29"/><path class="f" d="M28 54C24 24 44 14 56 16c18 3 24 22 16 38-2-10-8-16-22-16-10 0-18 6-22 16Z"/><path d="M28 54C24 24 44 14 56 16c18 3 24 22 16 38M42 86v18M58 86v18"/><path class="g" d="M43 62h4M54 62h4M45 76q5 4 10 0"/><path d="M84 16c1 6 3 8 9 9-6 1-8 3-9 9-1-6-3-8-9-9 6-1 8-3 9-9Z"/>'),
+body:sv("0 0 100 120",'<path class="f" d="M34 18C34 32 22 38 28 64 30 80 40 88 42 108H58C60 88 70 80 72 64 78 38 66 32 66 18Z"/><path d="M34 18C34 32 22 38 28 64c2 16 12 24 14 44M66 18c0 14 12 20 6 46-2 16-12 24-14 44M34 18c8-5 24-5 32 0"/><path class="g" d="M28 66q22 10 44 0M50 28v34"/><path d="M86 38 92 30l6 8M86 52l6-8 6 8" class="g"/>'),
+under:sv("0 0 100 120",'<path class="f" d="M28 10C24 44 36 66 34 112h14c0-46 4-66 2-102ZM50 10c2 36 6 56 6 102h14c-2-46 10-68 6-102Z"/><path d="M28 10C24 44 36 66 34 112h14c0-46 4-66 2-102M50 10c2 36 6 56 6 102h14c-2-46 10-68 6-102M28 10h48"/><path class="g" d="M20 56l-4 6 4 6M84 56l4 6-4 6M42 40h.1M62 44h.1M40 70h.1"/>')
+};
+const REGIONS={
+ head:{name:"Head",sub:"Hair, face & skin",items:[
+  {n:"Hair PRP",i:"drop",d:"Platelet-rich plasma is applied to the scalp to strengthen follicles and reduce thinning.",t:"45 min",s:"3–4 sessions"},
+  {n:"Face Lifting (HIFU)",i:"lift",d:"Focused ultrasound lifts and firms the cheeks, jawline and neck without surgery.",t:"60 min",s:"1–2 sessions"},
+  {n:"Botox",i:"syringe",d:"Softens expression lines on the forehead and around the eyes.",t:"20 min",s:"Every 4–6 months"},
+  {n:"Dermal Filler",i:"syringe",d:"Restores volume and contour to cheeks and chin.",t:"30 min",s:"Every 9–12 months"},
+  {n:"Skin Booster",i:"leaf",d:"Deep hydration for glow, texture and fine lines.",t:"40 min",s:"3 sessions"},
+  {n:"Pigmentation Laser",i:"sun",d:"Targets melasma and sun spots for an even complexion.",t:"30 min",s:"4–6 sessions"}]},
+ body:{name:"Body",sub:"Contour, tighten & lift",items:[
+  {n:"Body Tightening",i:"flame",d:"Radiofrequency energy tightens loose skin on the abdomen, arms and thighs.",t:"60 min",s:"6 sessions"},
+  {n:"Body Lifting",i:"lift",d:"Non-surgical lifting to improve firmness and shape.",t:"60 min",s:"4–6 sessions"},
+  {n:"Fat Reduction",i:"snow",d:"Cryolipolysis reduces stubborn fat pockets.",t:"60–90 min",s:"2–3 sessions"},
+  {n:"Cellulite Treatment",i:"dots",d:"Smooths dimpled skin on the thighs and buttocks.",t:"45 min",s:"6–8 sessions"},
+  {n:"Stretch Mark Therapy",i:"wave",d:"Fractional laser improves the look of stretch marks.",t:"40 min",s:"4–6 sessions"}]},
+ under:{name:"Under Body",sub:"Legs, underarm & lower areas",items:[
+  {n:"Laser Hair Removal (Leg)",i:"laser",d:"Long-lasting hair reduction for smooth legs.",t:"45 min",s:"6–8 sessions"},
+  {n:"Underarm Brightening",i:"star",d:"Reduces hair and evens out darker underarm skin.",t:"20 min",s:"5–6 sessions"},
+  {n:"Bikini Line Laser",i:"bow",d:"Gentle, precise hair removal for the bikini area.",t:"30 min",s:"6–8 sessions"},
+  {n:"Spider Vein Laser",i:"vein",d:"Treats fine leg veins with minimal downtime.",t:"30 min",s:"2–3 sessions"},
+  {n:"Leg Contouring",i:"leg",d:"Targets fat and cellulite on thighs and calves.",t:"60 min",s:"6 sessions"}]}
+};
+const EXTRA={male:{head:[{n:"Beard Shaping Laser",i:"laser",d:"Defines beard lines and reduces ingrown hairs.",t:"30 min",s:"6 sessions"}]},
+ female:{head:[{n:"Lip Contour",i:"lips",d:"Subtle filler to shape and hydrate the lips.",t:"30 min",s:"Every 9–12 months"}]}};
+let S={g:null,r:null};
+const $=document.getElementById("app"),cap=s=>s[0].toUpperCase()+s.slice(1);
+function topBar(step,back){
+ return `<div class="top">${back?`<button class="back" onclick="go('${back}')" aria-label="Back">‹</button>`:''}<div style="flex:1"><div class="crumb">${[S.g&&cap(S.g),S.r&&REGIONS[S.r].name].filter(Boolean).join(" · ")||"Welcome"}</div><div class="steps">${[0,1,2].map(i=>`<i class="${i<=step?'on':''}"></i>`).join("")}</div></div></div>`;
+}
+const VB={full:[0,0,360,520],head:[80,-14,120,173],body:[25,24,230,332],under:[40,245,200,289]};
+const RM=matchMedia("(prefers-reduced-motion:reduce)").matches;let busy=false;
+function tween(svg,a,b,ms,done){
+ const t0=performance.now(),e=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+ const set=k=>{const v=a.map((x,i)=>x+(b[i]-x)*k);svg.setAttribute("viewBox",v.join(" "));svg.style.strokeWidth=(1.5*v[2]/360).toFixed(3)};
+ if(RM){set(1);done&&done();return}
+ (function f(now){const t=Math.min(1,(now-t0)/ms);set(e(t));t<1?requestAnimationFrame(f):done&&done()})(t0);
+}
+function nav(fn){if(busy)return;busy=true;$.classList.add("leave");setTimeout(()=>{fn();render();$.classList.remove("leave");busy=false},RM?0:320)}
+const pick=g=>nav(()=>{S.g=g});
+function go(v){nav(()=>{if(v==="gender")S.g=S.r=null;if(v==="region"){S.last=S.r;S.r=null}})}
+function zoomTo(k){
+ if(busy)return;busy=true;const fig=$.querySelector(".fig");fig.classList.add("zooming");
+ fig.querySelectorAll(".zone").forEach(z=>z.classList.toggle("pick",z.dataset.k===k));
+ $.classList.add("fadeui");
+ tween(fig,VB.full,VB[k],850,()=>{$.classList.add("leave");setTimeout(()=>{S.r=k;render();$.classList.remove("leave","fadeui");busy=false},RM?0:260)});
+}
+function closeSheet(el){el.classList.add("closing");setTimeout(()=>el.remove(),RM?0:330)}
+
+function figure(g){
+ const f=g==="female",wl=f?92:84,wr=240-wl;
+ const hair=f?'<path class="f" d="M94 54C86 20 108 10 122 12C146 14 154 34 146 56C154 84 150 110 140 124L100 124C90 110 92 84 94 54Z"/><ellipse cx="120" cy="56" rx="22" ry="29" style="fill:var(--card)"/><path d="M94 54C86 20 108 10 122 12C146 14 154 34 146 56C154 84 150 110 140 124M94 54C90 84 92 110 100 124M98 50C108 36 130 34 142 50"/>'
+  :'<ellipse cx="120" cy="56" rx="22" ry="29" style="fill:var(--card)"/><path class="f" d="M98 50C94 24 108 16 122 16C140 16 148 30 142 50C140 40 132 34 120 34C108 34 100 40 98 50Z"/><path d="M98 50C94 24 108 16 122 16C140 16 148 30 142 50"/>';
+ const chest=f?'<path class="g" d="M96 152C102 168 116 168 120 154M144 152C138 168 124 168 120 154"/>':'<path class="g" d="M98 140C108 156 118 156 120 146M142 140C132 156 122 156 120 146"/>';
+ const headA=hair+'<path d="M110 82V98M130 82V98"/><path class="g" d="M108 56h5M127 56h5M112 70q8 5 16 0"/>';
+ const bodyA='<path d="M110 98C92 100 72 104 64 116C54 150 50 196 42 240C40 256 56 258 62 244C70 200 74 166 76 130"/><path d="M130 98C148 100 168 104 176 116C186 150 190 196 198 240C200 256 184 258 178 244C170 200 166 166 164 130"/>'
+  +`<path d="M76 130C82 156 ${wl} 176 ${wl} 204C${wl} 228 76 246 76 276M164 130C158 156 ${wr} 176 ${wr} 204C${wr} 228 164 246 164 276"/>`
+  +'<path class="g" d="M102 108Q120 116 138 108M120 130V200"/><path class="g" stroke-width="3" d="M120 220h.1"/>'+chest;
+ const underA='<path d="M76 276C96 294 144 294 164 276"/><path d="M76 276C70 330 78 380 80 430C80 460 78 480 76 500C72 512 96 514 98 500C100 480 102 460 104 430C108 390 116 340 120 292C124 340 132 390 136 430C138 460 140 480 142 500C144 514 168 512 164 500C162 480 160 460 160 430C162 380 170 330 164 276"/><path class="g" d="M86 424q8 6 16 0M138 424q8 6 16 0"/>';
+ const Z=(k,y1,y2,cy,hl,art)=>`<g class="zone" tabindex="0" role="button" aria-label="${REGIONS[k].name}" data-k="${k}" onclick="zoomTo('${k}')" onkeydown="if(event.key==='Enter')zoomTo('${k}')"><g transform="translate(20 0)"><rect x="-20" y="${y1}" width="360" height="${y2-y1}" fill="transparent" stroke="none"/>${hl}${art}<circle class="dot" cx="120" cy="${cy}" r="4"/><path class="g lead" stroke-dasharray="2 4" d="M128 ${cy}H212"/><text class="lt" x="224" y="${cy-2}">${REGIONS[k].name}</text><text class="ls" x="224" y="${cy+16}">${{head:"Hair & face",body:"Tighten & lift",under:"Legs & lower"}[k]}</text></g></g>`;
+ return `<svg viewBox="0 0 360 520" class="art fig">`
+  +Z("head",0,110,56,'<ellipse class="hl" cx="120" cy="62" rx="48" ry="64"/>',headA)
+  +Z("body",110,285,190,'<rect class="hl" x="36" y="104" width="168" height="176" rx="44"/>',bodyA)
+  +Z("under",285,520,390,'<rect class="hl" x="64" y="282" width="112" height="240" rx="44"/>',underA)
+  +'</svg>';
+}
+function render(){
+ const zo=S.last;S.last=null;
+ if(!S.g){
+  $.innerHTML=topBar(0,null)+`<div class="brand">AURA</div><div class="orn"></div><h1>Aesthetic Clinic</h1><p class="sub">Choose who the treatment is for to begin.</p>
+  <div class="grid two">${["male","female"].map(g=>`<button class="tile gt" onclick="pick('${g}')"><div class="arch">${ART[g]}</div><b>${cap(g)}</b><small>Tailored treatments</small></button>`).join("")}</div>`;
+ }else if(!S.r){
+  $.innerHTML=topBar(1,"gender")+`<h1>Choose an area</h1><div class="orn"></div><p class="sub" style="margin:0 0 8px">Tap the head, body or under body.</p>${figure(S.g)}`;
+ }else{
+  const R=REGIONS[S.r],l=list();
+  $.innerHTML=topBar(2,"region")+`<h1>${R.name}</h1><div class="orn"></div><p class="sub" style="margin-top:0">${l.length} treatments · tap for details</p>
+  <div class="grid">${l.map((x,i)=>`<button class="tile ti" onclick="detail(${i})"><div class="ring">${ic(x.i)}</div><span><b style="font-weight:400;font-size:18px;display:block">${x.n}</b><small>${x.t} · ${x.s}</small></span><span class="go">›</span></button>`).join("")}</div>`;
+ }
+ const fig=$.querySelector(".fig");
+ if(fig){fig.querySelectorAll("path:not(.lead)").forEach(p=>p.setAttribute("pathLength","1"));
+  if(zo){fig.style.animation="none";fig.classList.add("zin");tween(fig,VB[zo],VB.full,900)}else fig.classList.add("draw")}
+ [...$.children].forEach((c,i)=>c.style.setProperty("--i",i));
+ $.querySelectorAll(".grid").forEach(g=>[...g.children].forEach((c,i)=>c.style.setProperty("--d",i)));
+ window.scrollTo(0,0);
+}
+const list=()=>[...REGIONS[S.r].items,...((EXTRA[S.g]||{})[S.r]||[])];
+function detail(i){
+ const x=list()[i],el=document.createElement("div");el.className="sheet";
+ el.innerHTML=`<div><div class="ring">${ic(x.i)}</div><h2>${x.n}</h2><p>${x.d}</p><div class="meta"><span>${x.t}</span><span>${x.s}</span></div><button class="btn" id="bk">Book a consultation</button><button class="btn ghost" id="cl">Close</button></div>`;
+ el.onclick=e=>{if(e.target===el)closeSheet(el)};
+ el.querySelector("#cl").onclick=()=>closeSheet(el);
+ el.querySelector("#bk").onclick=()=>{el.firstChild.innerHTML=`<div class="ring">${ic("star")}</div><h2>Request received</h2><p>Our team will contact you to confirm your ${x.n} consultation.</p><button class="btn" id="ok">Done</button>`;el.querySelector("#ok").onclick=()=>closeSheet(el)};
+ document.body.appendChild(el);
+}
+render();
+</script>
+</body>
+</html>
